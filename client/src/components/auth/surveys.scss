@@ -1,0 +1,20 @@
+.SurveyNew {
+	.SurveyForm {
+		width: 300px;
+		.SurveyFormButtons {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			margin-top: 20px;
+		}
+	}
+	.SurveyFormFields {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		justify-content: space-between;
+	}
+	.SurveyField {
+		width: 100%;
+	}
+}
