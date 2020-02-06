@@ -16,16 +16,20 @@ const validate = (values) => {
     if(!values.password) {
         errors.password = 'Provide a password'
     }
+    if(!values.name) {
+        errors.name = 'Provide a password'
+    }
     return errors;
 };
 
-class SignInForm extends React.Component {
+class SignUpForm extends React.Component {
     render() {
         return (
             <article className="SurveyForm">
-                <h3>Sign In</h3>
+                <h3>Sign up</h3>
                 <form onSubmit={this.props.handleSubmit}>
                     <div className="SurveyFormFields">
+                        <Field label="Name" type="text" name="name" component={InputField} />
                         <Field label="Email" type="email" name="email" component={InputField} />
                         <Field label="Password" type="password" name="password" component={InputField} />
                     </div>
@@ -46,4 +50,4 @@ class SignInForm extends React.Component {
 export default reduxForm({
     validate,
     form: 'registerForm'
-})(SignInForm);
+})(SignUpForm);

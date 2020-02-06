@@ -5,13 +5,16 @@ import PropTypes from 'prop-types';
 import * as actions from '../../actions';
 
 import SignInForm from './SignInForm';
+import SignUpForm from './SignUpForm';
 import './surveys.scss';
 
 class RegisterForm extends React.Component {
     render() {
+        const {location} = this.props;
         return (
             <article className="SurveyNew">
-                <SignInForm onSubmit={this.props.submitSurvey} />
+                {location.pathname === '/register' && <SignUpForm onSubmit={this.props.submitSurvey} />}
+                {location.pathname === '/login' && <SignInForm onSubmit={this.props.submitSurvey} />}
             </article>
         );
     };
