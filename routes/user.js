@@ -11,6 +11,7 @@ const User = mongoose.model('users');
 module.exports = app => {
     app.post('api/users/register', (req, res) => {
         //TODO: add error checking (here or from client side - react-form)
+        console.log('### register', req.body);
 
         User.findOne({email: req.body.email})
             .then(user => {
@@ -46,6 +47,7 @@ module.exports = app => {
     });
 
     app.post('api/users/login', (req, res) => {
+        console.log('### login', req.body);
 
         const email = req.body.email;
         const password = req.body.password;

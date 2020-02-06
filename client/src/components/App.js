@@ -1,9 +1,9 @@
 import React from 'react';
 import {Route, Switch} from "react-router-dom";
 import {connect} from "react-redux";
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 
-import * as actions from '../actions';
+// import * as actions from '../actions';
 
 import Header from './Header';
 import Landing from './Landing'
@@ -40,16 +40,16 @@ class App extends React.Component {
 }
 
 App.propTypes = {
-    fetchUser: PropTypes.func,
+    isAuth: PropTypes.bool,
 };
 
-const mapDispatchToProps = dispatch => {
-    return {
-        // fetchUser: () => dispatch(actions.fetchUser())
-    }
-};
+// const mapDispatchToProps = dispatch => {
+//     return {
+//         // fetchUser: () => dispatch(actions.fetchUser())
+//     }
+// };
 const mapStateToProps = ({auth}) => {
-    return { isAuth: auth.isAuth }
+    return { isAuth: auth.isAuthenticated }
 };
 
-export default connect(null, null)(App);
+export default connect(mapStateToProps, null)(App);

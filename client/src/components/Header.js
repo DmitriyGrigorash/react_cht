@@ -33,13 +33,13 @@ function AuthBtn ({isAuth, classes}) {
   if (isAuth) {
     return(
       <Button color="inherit">
-          <Link href='/api/logout' underline='none' className={classes.link}>LOGOUT</Link>
+          <Link href='/register' underline='none' className={classes.link}>Sign Up</Link>
       </Button>
     )
   } else {
     return (
       <Button color="inherit">
-          <Link href='/auth/google' underline='none' className={classes.link}>LOGIN</Link>
+          <Link href='/login' underline='none' className={classes.link}>Sign In</Link>
       </Button>
     )
   }
@@ -68,7 +68,7 @@ export class Header extends React.PureComponent {
 
 Header.propTypes = {
     classes: PropTypes.object.isRequired,
-    isAuth: PropTypes.oneOfType([PropTypes.bool, PropTypes.object]).isRequired,
+    isAuth: PropTypes.bool
 };
 
 export default withStyles(styles)(Header);

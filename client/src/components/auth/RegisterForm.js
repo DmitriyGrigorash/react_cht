@@ -26,7 +26,7 @@ RegisterForm.propTypes = {
     loginUser: PropTypes.func.isRequired
 };
 
-const mapDispatchToProps = (dispatch, ownProps) => {
+const mapDispatchToProps = (dispatch) => {
     return {
         registerUser: (formData) => {
             dispatch(actions.registerUser(formData));
