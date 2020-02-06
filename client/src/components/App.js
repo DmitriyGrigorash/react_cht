@@ -3,7 +3,6 @@ import {Route, Switch} from "react-router-dom";
 import {connect} from "react-redux";
 import PropTypes from 'prop-types';
 
-
 import * as actions from '../actions';
 
 import Header from './Header';
@@ -23,7 +22,6 @@ class App extends React.Component {
     }
 
     render() {
-
         return(
             <main>
                 <Header isAuth={this.props.isAuth}/>
@@ -47,11 +45,11 @@ App.propTypes = {
 
 const mapDispatchToProps = dispatch => {
     return {
-        fetchUser: () => dispatch(actions.fetchUser())
+        // fetchUser: () => dispatch(actions.fetchUser())
     }
 };
 const mapStateToProps = ({auth}) => {
     return { isAuth: auth.isAuth }
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect(null, null)(App);

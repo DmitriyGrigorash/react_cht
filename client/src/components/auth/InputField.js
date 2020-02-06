@@ -12,7 +12,7 @@ const InputField = ({input, label, name, meta, type}) => {
 		        label={error ? meta.error : label}
 		        name={name}
 		        fullWidth
-		        error={error ? true : false}
+		        error={!!error}
 		        {...input}
       		/>
 		</div>

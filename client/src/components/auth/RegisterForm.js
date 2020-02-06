@@ -6,29 +6,33 @@ import * as actions from '../../actions';
 
 import SignInForm from './SignInForm';
 import SignUpForm from './SignUpForm';
+
 import './surveys.scss';
 
 class RegisterForm extends React.Component {
     render() {
         const {location} = this.props;
         return (
-            <article className="SurveyNew">
-                {location.pathname === '/register' && <SignUpForm onSubmit={this.props.submitSurvey} />}
-                {location.pathname === '/login' && <SignInForm onSubmit={this.props.submitSurvey} />}
+            <article className="RegisterForm">
+                {location.pathname === '/register' && <SignUpForm onSubmit={this.props.registerUser} />}
+                {location.pathname === '/login' && <SignInForm onSubmit={this.props.loginUser} />}
             </article>
         );
     };
 }
 
 RegisterForm.propTypes = {
-    submitSurvey: PropTypes.func
+    registerUser: PropTypes.func.isRequired,
+    loginUser: PropTypes.func.isRequired
 };
 
 const mapDispatchToProps = (dispatch, ownProps) => {
     return {
-        submitSurvey: (formData) => {
-            dispatch(actions.submitSurvey(formData));
-            // ownProps.history.push('/surveys');
+        registerUser: (formData) => {
+            dispatch(actions.registerUser(formData));
+        },
+        loginUser: (formData) => {
+            dispatch(actions.loginUser(formData));
         }
     }
 };

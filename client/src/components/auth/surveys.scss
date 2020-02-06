@@ -1,20 +1,17 @@
-.SurveyNew {
-	.SurveyForm {
+.RegisterForm {
+	.BaseForm {
 		width: 300px;
-		.SurveyFormButtons {
+		.BaseFormButtons {
 			display: flex;
 			justify-content: space-between;
 			align-items: center;
 			margin-top: 20px;
 		}
 	}
-	.SurveyFormFields {
+	.BaseFormFields {
 		display: flex;
 		flex-direction: column;
 		align-items: flex-start;
 		justify-content: space-between;
-	}
-	.SurveyField {
-		width: 100%;
 	}
 }

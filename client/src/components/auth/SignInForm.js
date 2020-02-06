@@ -22,14 +22,14 @@ const validate = (values) => {
 class SignInForm extends React.Component {
     render() {
         return (
-            <article className="SurveyForm">
+            <article className="BaseForm">
                 <h3>Sign In</h3>
                 <form onSubmit={this.props.handleSubmit}>
-                    <div className="SurveyFormFields">
+                    <div className="BaseFormFields">
                         <Field label="Email" type="email" name="email" component={InputField} />
                         <Field label="Password" type="password" name="password" component={InputField} />
                     </div>
-                    {/*<div className="SurveyFormButtons">*/}
+                    {/*<div className="BaseFormButtons">*/}
                     {/*    <Button color="default" size="medium" type="submit" variant="contained">*/}
                     {/*        <Link href="/surveys" underline="none">Cancel</Link>*/}
                     {/*    </Button>*/}
