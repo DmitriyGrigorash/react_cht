@@ -4,13 +4,10 @@ import AppBar from "@material-ui/core/AppBar";
 import { withStyles } from '@material-ui/core/styles';
 import Toolbar from "@material-ui/core/Toolbar";
 import HomeIcon from '@material-ui/icons/Home';
-import AccountBalance from '@material-ui/icons/AccountBalance';
-import AddIcon from '@material-ui/icons/Add'
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import Link from '@material-ui/core/Link';
 import Fab from "@material-ui/core/Fab";
-import Badge from "@material-ui/core/Badge";
 
 const styles = {
     root: {
@@ -55,22 +52,12 @@ export class Header extends React.PureComponent {
             <header className={classes.root}>
                 <AppBar position="static" color="primary">
                     <Toolbar>
-                        <Fab color="primary" size="medium" className={classes.menuButton} href={isAuth ? '/surveys' : '/'}>
+                        <Fab color="primary" size="medium" className={classes.menuButton} href='/'>
                             <HomeIcon />
                         </Fab>
                         <Typography variant="h6" color="inherit" className={classes.grow}>
-                            Emaily
+                            Random Chat
                         </Typography>
-                        <Fab color="primary" aria-label="Add" size="medium" href="/charge" className={classes.add}>
-                            <AddIcon />
-                        </Fab>
-                        <Badge
-                            color="secondary" max={99999}
-                            style={{marginRight: '30px'}}
-                            badgeContent={isAuth.credits}
-                        >
-                            <AccountBalance />
-                        </Badge>
                         <AuthBtn isAuth={isAuth} classes={classes}/>
                     </Toolbar>
                 </AppBar>
