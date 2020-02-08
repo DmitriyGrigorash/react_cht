@@ -9,9 +9,11 @@ const keys = require('../config/keys');
 const User = mongoose.model('users');
 
 module.exports = app => {
-    app.post('api/users/register', (req, res) => {
+    app.get('/', (req, res) => {
+        res.send('YOU')
+    });
+    app.post('/api/users/register', async (req, res) => {
         //TODO: add error checking (here or from client side - react-form)
-        console.log('### register', req.body);
 
         User.findOne({email: req.body.email})
             .then(user => {
@@ -29,12 +31,11 @@ module.exports = app => {
                     bcrypt.genSalt(10, (err, salt) => {
                         if(err) console.error('Error: ', err);
                         else {
-                            bcrypt.hash(newUser.password, salt, (err, hash) => {
+                            bcrypt.hash(newUser.password, salt, async (err, hash) => {
                                 if(err) console.error('Error: ', err);
                                 else {
                                     newUser.password = hash;
-                                    newUser
-                                        .save()
+                                    await newUser.save()
                                         .then(user => {
                                             res.json(user)
                                         });
@@ -46,7 +47,7 @@ module.exports = app => {
             })
     });
 
-    app.post('api/users/login', (req, res) => {
+    app.post('/api/users/login', (req, res) => {
         console.log('### login', req.body);
 
         const email = req.body.email;
@@ -83,7 +84,7 @@ module.exports = app => {
             });
     });
 
-    app.get('api/users/me', passport.authenticate('jwt', { session: false }), (req, res) => {
+    app.get('/api/users/me', passport.authenticate('jwt', { session: false }), (req, res) => {
         return res.json({
             id: req.user.id,
             name: req.user.name,
