@@ -22,7 +22,7 @@ class App extends React.Component {
                         <Route exact path="/" component={ Landing } />
                         <div className="container">
                             <Route exact path="/register" component={ RegisterForm } />
-                            <Route exact path="/login" component={ RegisterForm } />
+                            <Route exact path="/login"    component={ RegisterForm } />
                         </div>
                     </Switch>
                 </div>

@@ -7,7 +7,7 @@ import * as actions from '../../actions';
 import SignInForm from './SignInForm';
 import SignUpForm from './SignUpForm';
 
-import './surveys.scss';
+import './styles.scss';
 
 
 class RegisterForm extends React.Component {
