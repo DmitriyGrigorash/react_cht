@@ -48,7 +48,6 @@ module.exports = app => {
     });
 
     app.post('/api/users/login', (req, res) => {
-        console.log('### login', req.body);
 
         const email = req.body.email;
         const password = req.body.password;
