@@ -1,9 +1,9 @@
 import React from 'react';
 import {Route, Switch} from "react-router-dom";
 import {connect} from "react-redux";
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 
-// import * as actions from '../actions';
+import {logoutUser} from "../actions";
 
 import Header from './Header';
 import Landing from './Landing'
@@ -13,18 +13,10 @@ import './styles.scss';
 
 
 class App extends React.Component {
-    componentDidMount() {
-
-    }
-
-    componentDidUpdate() {
-
-    }
-
     render() {
         return(
             <main>
-                <Header isAuth={this.props.isAuth}/>
+                <Header isAuth={this.props.isAuth} user={this.props.user} logout={this.props.logoutUser}/>
                 <div className="content">
                     <Switch>
                         <Route exact path="/" component={ Landing } />
@@ -41,6 +33,8 @@ class App extends React.Component {
 
 App.propTypes = {
     isAuth: PropTypes.bool,
+    user: PropTypes.object,
+    logoutUser: PropTypes.func,
 };
 
 // const mapDispatchToProps = dispatch => {
@@ -49,7 +43,7 @@ App.propTypes = {
 //     }
 // };
 const mapStateToProps = ({auth}) => {
-    return { isAuth: auth.isAuthenticated }
+    return { isAuth: auth.isAuthenticated, user: auth.user }
 };
 
-export default connect(mapStateToProps, null)(App);
+export default connect(mapStateToProps, {logoutUser})(App);

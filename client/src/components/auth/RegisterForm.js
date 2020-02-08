@@ -9,7 +9,25 @@ import SignUpForm from './SignUpForm';
 
 import './surveys.scss';
 
+
 class RegisterForm extends React.Component {
+
+    componentWillReceiveProps(nextProps) {
+        if(nextProps.auth.isAuthenticated) {
+            this.props.history.push('/')
+        }
+        if(nextProps.errors) {
+            this.setState({
+                errors: nextProps.errors
+            });
+        }
+    }
+
+    componentDidMount() {
+        if(this.props.auth.isAuthenticated) {
+            this.props.history.push('/');
+        }
+    }
     render() {
         const {location} = this.props;
         return (
@@ -23,13 +41,19 @@ class RegisterForm extends React.Component {
 
 RegisterForm.propTypes = {
     registerUser: PropTypes.func.isRequired,
-    loginUser: PropTypes.func.isRequired
+    loginUser: PropTypes.func.isRequired,
+    auth: PropTypes.object.isRequired,
 };
 
-const mapDispatchToProps = (dispatch) => {
+const mapStateToProps = state => ({
+    auth: state.auth,
+    errors: state.auth.errors
+});
+
+const mapDispatchToProps = (dispatch, props) => {
     return {
         registerUser: (formData) => {
-            dispatch(actions.registerUser(formData));
+            dispatch(actions.registerUser(formData, props.history));
         },
         loginUser: (formData) => {
             dispatch(actions.loginUser(formData));
@@ -37,4 +61,4 @@ const mapDispatchToProps = (dispatch) => {
     }
 };
 
-export default connect(null, mapDispatchToProps)(RegisterForm);
+export default connect(mapStateToProps, mapDispatchToProps)(RegisterForm);
