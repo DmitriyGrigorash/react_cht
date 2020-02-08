@@ -29,27 +29,31 @@ const styles = {
     },
     link: {
         textDecoration: 'none',
-        color: 'white'
+        color: 'white',
+        outline: 'none'
     },
     add: {
         marginRight: 20,
+    },
+    button: {
+        border: 'none',
     }
 };
 
 function AuthBtn({isAuth, classes, logout}) {
     if (isAuth) {
         return (
-            <Button color="inherit" onClick={logout}>
-                Logout
+            <Button variant="contained" color="secondary" className={classes.button} onClick={logout}>
+                <Link href='/login' underline='none' className={classes.link}>Logout</Link>
             </Button>
         )
     } else {
         return (
             <ButtonGroup color="primary" aria-label="outlined primary button group">
-                <Button color="inherit">
+                <Button color="primary" className={classes.button}>
                     <Link href='/register' underline='none' className={classes.link}>Sign Up</Link>
                 </Button>
-                <Button color="inherit">
+                <Button color="primary" className={classes.button}>
                     <Link href='/login' underline='none' className={classes.link}>Sign In</Link>
                 </Button>
             </ButtonGroup>
@@ -58,20 +62,21 @@ function AuthBtn({isAuth, classes, logout}) {
 }
 
 export class Header extends React.PureComponent {
+    constructor(props) {
+        super(props);
+        this.onLogout = this.onLogout.bind(this);
+    }
     onLogout(e) {
         e.preventDefault();
-        this.props.logoutUser(this.props.history);
+        this.props.logout();
     }
 
     render() {
         const {classes, auth} = this.props;
         return (
             <header className={classes.root}>
-                <AppBar position="static" color="primary">
+                <AppBar position="static" color="secondary">
                     <Toolbar>
-                        <Fab color="primary" size="medium" className={classes.menuButton} href='/'>
-                            <HomeIcon />
-                        </Fab>
                         <Typography variant="h6" color="inherit" className={classes.grow}>
                             Random Chat
                         </Typography>
@@ -89,11 +94,19 @@ export class Header extends React.PureComponent {
 Header.propTypes = {
     classes: PropTypes.object.isRequired,
     auth: PropTypes.object,
-    logoutUser: PropTypes.func
+    logout: PropTypes.func,
+};
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        logout: () => {
+            dispatch(logoutUser());
+        },
+    }
 };
 
 const mapStateToProps = (state) => ({
     auth: state.auth
 });
 
-export default connect(mapStateToProps, { logoutUser })(withRouter(withStyles(styles)(Header)));
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(withStyles(styles)(Header)));

@@ -2,8 +2,6 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const passport = require('passport');
 const mongoose = require('mongoose');
-// const validateRegisterInput = require('../validation/register');
-// const validateLoginInput = require('../validation/login');
 
 const keys = require('../config/keys');
 const User = mongoose.model('users');
@@ -13,8 +11,6 @@ module.exports = app => {
         res.send('YOU')
     });
     app.post('/api/users/register', async (req, res) => {
-        //TODO: add error checking (here or from client side - react-form)
-
         User.findOne({email: req.body.email})
             .then(user => {
                 if(user) {

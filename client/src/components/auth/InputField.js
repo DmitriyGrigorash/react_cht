@@ -3,7 +3,6 @@ import TextField from '@material-ui/core/TextField';
 
 const InputField = ({input, label, name, meta, type}) => {
 	const error = meta.touched && meta.error;
-	console.log('### input, label, name, meta', input, label, name, meta, type);
 	return (
 		<div className="InputField">
 			<TextField

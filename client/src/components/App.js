@@ -1,5 +1,5 @@
 import React from 'react';
-import {Route, Switch} from "react-router-dom";
+import {Redirect, Route, Switch} from "react-router-dom";
 import {connect} from "react-redux";
 import PropTypes from 'prop-types';
 
@@ -11,18 +11,42 @@ import RegisterForm from './auth/RegisterForm';
 
 import './styles.scss';
 
+function PrivateRoute({ children, ...rest }) {
+    return (
+        <Route
+            {...rest}
+            render={({ location }) =>
+                rest.isAuth ? (
+                    children
+                ) : (
+                    <Redirect
+                        to={{
+                            pathname: "/login",
+                            state: { from: location }
+                        }}
+                    />
+                )
+            }
+        />
+    );
+}
 
 class App extends React.Component {
     render() {
         return(
             <main>
-                <Header isAuth={this.props.isAuth} user={this.props.user} logout={this.props.logoutUser}/>
+                <Header isAuth={this.props.isAuth} user={this.props.user} logout={logoutUser}/>
                 <div className="content">
                     <Switch>
-                        <Route exact path="/" component={ Landing } />
+                         <Route exact path="/">
+                            {this.props.isAuth ? <Redirect to="/chat" /> : <Redirect to="/login" />}
+                        </Route>
                         <div className="container">
                             <Route exact path="/register" component={ RegisterForm } />
                             <Route exact path="/login"    component={ RegisterForm } />
+                            <PrivateRoute path="/chat" isAuth={this.props.isAuth}>
+                                <Landing />
+                            </PrivateRoute>
                         </div>
                     </Switch>
                 </div>
@@ -32,9 +56,8 @@ class App extends React.Component {
 }
 
 App.propTypes = {
-    isAuth: PropTypes.bool,
+    isAuth: PropTypes.object,
     user: PropTypes.object,
-    logoutUser: PropTypes.func,
 };
 
 // const mapDispatchToProps = dispatch => {
@@ -46,4 +69,4 @@ const mapStateToProps = ({auth}) => {
     return { isAuth: auth.isAuthenticated, user: auth.user }
 };
 
-export default connect(mapStateToProps, {logoutUser})(App);
+export default connect(mapStateToProps, null)(App);
