@@ -17,24 +17,30 @@ const validate = (values) => {
 
 class SignInForm extends React.Component {
     render() {
+        const {errors} = this.props;
         return (
             <article className="BaseForm">
                 <h3>Sign In</h3>
                 <form onSubmit={this.props.handleSubmit}>
                     <div className="BaseFormFields">
-                        <Field label="Email" type="email" name="email" component={InputField} />
-                        <Field label="Password" type="password" name="password" component={InputField} />
+                        <Field label="Email" type="email" name="email" component={InputField} errors={errors}/>
+                        <Field label="Password" type="password" name="password" component={InputField} errors={errors}/>
                     </div>
                     <div className="BaseFormButtons">
                         <Button color="default" size="medium" type="submit" variant="contained">
                             Sign In
                         </Button>
                     </div>
+                    <p className="BaseForm__error">{errors && errors}</p>
                 </form>
             </article>
         );
     };
 }
+
+SignInForm.defaultProps = {
+    errors: '',
+};
 
 export default reduxForm({
     validate,

@@ -6,11 +6,9 @@ import {withRouter} from 'react-router-dom';
 import AppBar from "@material-ui/core/AppBar";
 import { withStyles } from '@material-ui/core/styles';
 import Toolbar from "@material-ui/core/Toolbar";
-import HomeIcon from '@material-ui/icons/Home';
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import Link from '@material-ui/core/Link';
-import Fab from "@material-ui/core/Fab";
 import ButtonGroup from "@material-ui/core/ButtonGroup";
 
 import {logoutUser} from "../actions";
@@ -78,7 +76,7 @@ export class Header extends React.PureComponent {
                 <AppBar position="static" color="secondary">
                     <Toolbar>
                         <Typography variant="h6" color="inherit" className={classes.grow}>
-                            Random Chat
+                            Exciting Random Chat
                         </Typography>
                         <Typography variant="h6" color="inherit" className={classes.grow}>
                             {auth.user && auth.user.name}

@@ -20,6 +20,7 @@ const validate = (values) => {
 
 class SignUpForm extends React.Component {
     render() {
+        const {errors} = this.props;
         return (
             <article className="BaseForm">
                 <h3>Sign up</h3>
@@ -34,6 +35,7 @@ class SignUpForm extends React.Component {
                             Sign up
                         </Button>
                     </div>
+                    <p className="BaseForm__error">{errors && errors}</p>
                 </form>
             </article>
         );

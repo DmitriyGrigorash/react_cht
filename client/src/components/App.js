@@ -3,7 +3,6 @@ import {Redirect, Route, Switch} from "react-router-dom";
 import {connect} from "react-redux";
 import PropTypes from 'prop-types';
 
-import {logoutUser} from "../actions";
 
 import Header from './Header';
 import Landing from './Landing'
@@ -35,16 +34,17 @@ class App extends React.Component {
     render() {
         return(
             <main>
-                <Header isAuth={this.props.isAuth} user={this.props.user} logout={logoutUser}/>
+                <Header isAuth={this.props.isAuth} user={this.props.user}/>
                 <div className="content">
                     <Switch>
-                         <Route exact path="/">
-                            {this.props.isAuth ? <Redirect to="/chat" /> : <Redirect to="/login" />}
-                        </Route>
+                         <Route
+                             exact path="/"
+                             render={() => <Redirect to="/chat" />}
+                         />
                         <div className="container">
                             <Route exact path="/register" component={ RegisterForm } />
                             <Route exact path="/login"    component={ RegisterForm } />
-                            <PrivateRoute path="/chat" isAuth={this.props.isAuth}>
+                            <PrivateRoute exact path="/chat" isAuth={this.props.isAuth}>
                                 <Landing />
                             </PrivateRoute>
                         </div>
@@ -56,7 +56,7 @@ class App extends React.Component {
 }
 
 App.propTypes = {
-    isAuth: PropTypes.object,
+    isAuth: PropTypes.bool.isRequired,
     user: PropTypes.object,
 };
 

@@ -1,9 +1,9 @@
-import {GET_ERRORS, SET_CURRENT_USER} from "../actions/types";
+import {GET_ERRORS, SET_CURRENT_USER, LOGOUT_USER} from "../actions/types";
 
 const initialState = {
     isAuthenticated: false,
     user: {},
-    errors: {}
+    errors: ''
 };
 
 export default function ( state = initialState, action ) {
@@ -11,11 +11,16 @@ export default function ( state = initialState, action ) {
         case SET_CURRENT_USER:
             return {
                 ...state,
-                isAuthenticated: action.payload,
+                isAuthenticated: true,
                 user: action.payload
             };
+        case LOGOUT_USER:
+            return {
+                isAuthenticated: false,
+                user: {}
+            };
         case GET_ERRORS:
-            return { ...state, errors: action.payload };
+            return { ...state, errors: action.payload, isAuthenticated: false };
         default:
             return state;
     }
