@@ -1,4 +1,4 @@
-import {GET_ERRORS, SET_CURRENT_USER, LOGOUT_USER} from "../actions/types";
+import {GET_ERRORS, SET_CURRENT_USER, LOGOUT_USER, GET_USER_DATA} from "../actions/types";
 
 const initialState = {
     isAuthenticated: false,

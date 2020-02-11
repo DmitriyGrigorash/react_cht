@@ -1,13 +1,28 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
+import {connect} from "react-redux";
+
 
 class Landing extends Component {
-  render() {
-    return (
-      <article>
-        Landing page
-      </article>
-    );
-  }
+
+    componentDidMount() {
+        // this.props.getUser()
+    }
+
+    render() {
+        return (
+            <article>
+                Landing page
+            </article>
+        );
+    }
 }
 
-export default Landing;
+// const mapDispatchToProps = (dispatch) => {
+//     return {
+//         getUser: () => {
+//             dispatch(getUserData());
+//         }
+//     }
+// };
+
+export default connect(null, null)(Landing);

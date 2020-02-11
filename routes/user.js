@@ -1,15 +1,12 @@
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-const passport = require('passport');
+// const passport = require('passport');
 const mongoose = require('mongoose');
 
 const keys = require('../config/keys');
 const User = mongoose.model('users');
 
 module.exports = app => {
-    app.get('/', (req, res) => {
-        res.send('YOU')
-    });
     app.post('/api/users/register', async (req, res) => {
         User.findOne({email: req.body.email})
             .then(user => {
@@ -77,13 +74,5 @@ module.exports = app => {
                         }
                     });
             });
-    });
-
-    app.get('/api/users/me', passport.authenticate('jwt', { session: false }), (req, res) => {
-        return res.json({
-            id: req.user.id,
-            name: req.user.name,
-            email: req.user.email
-        });
     });
 };

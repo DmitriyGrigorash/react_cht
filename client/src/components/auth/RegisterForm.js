@@ -1,6 +1,7 @@
 import React from 'react';
 import {connect} from "react-redux";
 import PropTypes from 'prop-types';
+import {Redirect} from "react-router-dom";
 
 import * as actions from '../../actions';
 
@@ -8,7 +9,6 @@ import SignInForm from './SignInForm';
 import SignUpForm from './SignUpForm';
 
 import './styles.scss';
-import {Redirect} from "react-router-dom";
 
 
 class RegisterForm extends React.Component {
