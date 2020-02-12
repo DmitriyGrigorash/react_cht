@@ -38,10 +38,10 @@ const mapStateToProps = ({auth}) => ({
     errors: auth.errors
 });
 
-const mapDispatchToProps = (dispatch, props) => {
+const mapDispatchToProps = (dispatch) => {
     return {
         registerUser: (formData) => {
-            dispatch(actions.registerUser(formData, props.history));
+            dispatch(actions.registerUser(formData));
         },
         loginUser: (formData) => {
             dispatch(actions.loginUser(formData));

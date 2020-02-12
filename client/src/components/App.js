@@ -60,11 +60,6 @@ App.propTypes = {
     user: PropTypes.object,
 };
 
-// const mapDispatchToProps = dispatch => {
-//     return {
-//         // fetchUser: () => dispatch(actions.fetchUser())
-//     }
-// };
 const mapStateToProps = ({auth}) => {
     return { isAuth: auth.isAuthenticated, user: auth.user }
 };
