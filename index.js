@@ -35,6 +35,7 @@ if (port == null || port == "") {
 
 /*** Routes ***/
 require('./routes/user')(app);
+require('./routes/message')(app);
 
 
 if (process.env.NODE_ENV === 'production') {

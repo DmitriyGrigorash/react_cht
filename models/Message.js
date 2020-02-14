@@ -1,7 +1,6 @@
 const mongoose = require("mongoose");
 const { Schema } = mongoose;
 
-
 const MessageSchema = new Schema({
     body: String,
     read: Boolean,
@@ -10,4 +9,4 @@ const MessageSchema = new Schema({
     name: String
 });
 
-mongoose.model('surveys', MessageSchema);
+mongoose.model('messages', MessageSchema);
