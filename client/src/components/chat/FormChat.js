@@ -6,17 +6,13 @@ import Button from "@material-ui/core/Button";
 
 const validate = (values) => {
     const errors = {};
+    console.log('### values', values);
     if(!values.message) {
         errors.message = 'Field could not be empty'
     }
     return errors;
 };
 class FormChat extends Component {
-
-    componentDidMount() {
-        // this.props.getUser()
-    }
-
     render() {
         const {errors} = this.props;
         return (
@@ -31,14 +27,14 @@ class FormChat extends Component {
                             errors={errors}
                             input={{
                                 multiline: true,
-                                defaultValue:"Default Value",
-                                variant:"outlined",
-                                color: "secondary"
+                                rows: 5,
+                                variant: "outlined",
+                                color: "primary"
                             }}
                         />
                     </div>
                     <div className="FormChat__Button">
-                        <Button color="secondary" size="medium" type="submit" variant="outlined">
+                        <Button color="secondary" size="medium" type="submit" variant="contained">
                             Send
                         </Button>
                     </div>
@@ -47,14 +43,6 @@ class FormChat extends Component {
         )
     }
 }
-
-// const mapDispatchToProps = (dispatch) => {
-//     return {
-//         getUser: () => {
-//             dispatch(getUserData());
-//         }
-//     }
-// };
 
 FormChat.defaultProps = {
     errors: '',

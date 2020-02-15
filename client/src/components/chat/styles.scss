@@ -14,11 +14,13 @@
         justify-content: flex-start;
         align-items: stretch;
 
-        border: 1px solid #f50057;
+        border: 1px solid #FFEECB;
         border-radius: 5px;
+        box-shadow:inset 0 0 5px 1px rgba(0, 0, 0, 0.2);;
         height: 400px;
         overflow-y: auto;
         padding: 20px;
+        z-index: 10;
     }
     &__Text-field {
         margin-top: 50px;
@@ -35,7 +37,7 @@
     }
 
     &__Text {
-        flex-basis: 350px;
+        flex-basis: 380px;
     }
     &__Button {
         margin-left: 10px;

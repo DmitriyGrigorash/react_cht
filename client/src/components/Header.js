@@ -27,7 +27,7 @@ const styles = {
     },
     link: {
         textDecoration: 'none',
-        color: 'white',
+        // color: 'white',
         outline: 'none'
     },
     add: {
@@ -42,17 +42,17 @@ function AuthBtn({isAuth, classes, logout}) {
     if (isAuth) {
         return (
             <Button variant="contained" color="secondary" className={classes.button} onClick={logout}>
-                <Link href='/login' underline='none' className={classes.link}>Logout</Link>
+                <Link color="secondary" href='/login' underline='none' className={classes.link}>Logout</Link>
             </Button>
         )
     } else {
         return (
-            <ButtonGroup color="primary" aria-label="outlined primary button group">
-                <Button color="primary" className={classes.button}>
-                    <Link href='/register' underline='none' className={classes.link}>Sign Up</Link>
+            <ButtonGroup color="secondary" aria-label="secondary button group">
+                <Button color="secondary" className={classes.button}>
+                    <Link color="secondary" href='/register' underline='none' className={classes.link}>Sign Up</Link>
                 </Button>
-                <Button color="primary" className={classes.button}>
-                    <Link href='/login' underline='none' className={classes.link}>Sign In</Link>
+                <Button color="secondary" className={classes.button}>
+                    <Link color="secondary" href='/login' underline='none' className={classes.link}>Sign In</Link>
                 </Button>
             </ButtonGroup>
         )
@@ -73,9 +73,9 @@ export class Header extends React.PureComponent {
         const {classes, auth} = this.props;
         return (
             <header className={classes.root}>
-                <AppBar position="static" color="secondary">
+                <AppBar color="primary" position="static" className={classes.header}>
                     <Toolbar>
-                        <Typography variant="h6" color="inherit" className={classes.grow}>
+                        <Typography variant="h5" color="secondary" className={classes.grow}>
                             Exciting Random Chat
                         </Typography>
                         <Typography variant="h6" color="inherit" className={classes.grow}>
