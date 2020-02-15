@@ -1,4 +1,8 @@
 .RegisterForm {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
 	.BaseForm {
 		width: 350px;
 		.BaseFormButtons {

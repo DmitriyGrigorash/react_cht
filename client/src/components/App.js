@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 
 
 import Header from './Header';
-import Landing from './Landing'
+import Landing from './chat/Chat'
 import RegisterForm from './auth/RegisterForm';
 
 import './styles.scss';
