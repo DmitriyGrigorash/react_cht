@@ -7,7 +7,7 @@ import jwt_decode from "jwt-decode";
 import App from "./components/App";
 import configureStore from './store/configureStore';
 import setAuthToken from "./setAuthToken";
-import {logoutUser, setCurrentUser} from "./actions";
+import {logoutUser, setCurrentUser} from "./actions/user";
 
 const store = configureStore();
 

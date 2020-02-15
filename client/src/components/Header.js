@@ -11,7 +11,7 @@ import Button from "@material-ui/core/Button";
 import Link from '@material-ui/core/Link';
 import ButtonGroup from "@material-ui/core/ButtonGroup";
 
-import {logoutUser} from "../actions";
+import {logoutUser} from "../actions/user";
 
 
 const styles = {

@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const Message = mongoose.model('messages');
 
 module.exports = app => {
-    app.post('/api/messages', async (req, res) => {
+    app.post('/api/message', async (req, res) => {
         const {body, read, dateSent, _userId, name} = req.body;
 
         const message = new Message({body, read, dateSent, _userId, name});

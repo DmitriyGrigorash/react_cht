@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-import { fetchSurveys } from "../../actions";
+import { fetchSurveys } from "../../actions/user";
 
 class SurveysList extends Component {
     componentDidMount() {

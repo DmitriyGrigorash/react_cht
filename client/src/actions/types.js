@@ -1,3 +1,6 @@
 export const GET_ERRORS = 'GET_ERRORS';
 export const SET_CURRENT_USER = 'SET_CURRENT_USER';
 export const LOGOUT_USER = 'LOGOUT_USER';
+export const SEND_MESSAGE = 'SEND_MESSAGE';
+export const GET_MESSAGES = 'GET_MESSAGES';
+export const MESSAGES_ERROR = 'GET_MESSAGES_ERROR';

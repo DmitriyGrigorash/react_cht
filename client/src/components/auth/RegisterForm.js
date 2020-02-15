@@ -3,7 +3,7 @@ import {connect} from "react-redux";
 import PropTypes from 'prop-types';
 import {Redirect} from "react-router-dom";
 
-import * as actions from '../../actions';
+import * as actions from '../../actions/user';
 
 import SignInForm from './SignInForm';
 import SignUpForm from './SignUpForm';
