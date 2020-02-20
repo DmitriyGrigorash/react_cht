@@ -27,7 +27,7 @@ const styles = {
     },
     link: {
         textDecoration: 'none',
-        // color: 'white',
+        color: 'black',
         outline: 'none'
     },
     add: {
@@ -47,11 +47,11 @@ function AuthBtn({isAuth, classes, logout}) {
         )
     } else {
         return (
-            <ButtonGroup color="secondary" aria-label="secondary button group">
-                <Button color="secondary" className={classes.button}>
+            <ButtonGroup color="secondary" aria-label="contained secondary button group">
+                <Button variant="contained" color="secondary" className={classes.button}>
                     <Link color="secondary" href='/register' underline='none' className={classes.link}>Sign Up</Link>
                 </Button>
-                <Button color="secondary" className={classes.button}>
+                <Button variant="contained" color="secondary" className={classes.button}>
                     <Link color="secondary" href='/login' underline='none' className={classes.link}>Sign In</Link>
                 </Button>
             </ButtonGroup>

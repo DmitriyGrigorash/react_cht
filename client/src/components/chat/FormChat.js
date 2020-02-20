@@ -1,12 +1,11 @@
 import React, {Component} from 'react';
 import {Field, reduxForm} from "redux-form";
-import InputField from "../auth/InputField";
+import InputField from "../InputField";
 import Button from "@material-ui/core/Button";
 
 
 const validate = (values) => {
     const errors = {};
-    console.log('### values', values);
     if(!values.message) {
         errors.message = 'Field could not be empty'
     }
@@ -25,11 +24,11 @@ class FormChat extends Component {
                             name="message"
                             component={InputField}
                             errors={errors}
-                            input={{
+                            props={{
                                 multiline: true,
                                 rows: 5,
-                                variant: "outlined",
-                                color: "primary"
+                                color: "secondary",
+                                margin: "none",
                             }}
                         />
                     </div>

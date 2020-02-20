@@ -3,7 +3,7 @@ import { Field, reduxForm } from 'redux-form';
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 
-import InputField from './InputField';
+import InputField from '../InputField';
 
 const validate = (values) => {
     const errors = {};
@@ -27,9 +27,9 @@ class SignUpForm extends React.Component {
                 <Typography color="secondary" variant="h3">Sign up</Typography>
                 <form onSubmit={this.props.handleSubmit}>
                     <div className="BaseFormFields">
-                        <Field label="Name" type="text" name="name" component={InputField} input={{color: "secondary"}}/>
-                        <Field label="Email" type="email" name="email" component={InputField} input={{color: "secondary"}}/>
-                        <Field label="Password" type="password" name="password" component={InputField} input={{color: "secondary"}}/>
+                        <Field label="Name" type="text" name="name" component={InputField} props={{color: "secondary"}}/>
+                        <Field label="Email" type="email" name="email" component={InputField} props={{color: "secondary"}}/>
+                        <Field label="Password" type="password" name="password" component={InputField} props={{color: "secondary"}}/>
                     </div>
                     <div className="BaseFormButtons">
                         <Button color="secondary" size="medium" type="submit" variant="contained">

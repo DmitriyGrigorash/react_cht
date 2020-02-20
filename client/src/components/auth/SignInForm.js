@@ -3,7 +3,7 @@ import { Field, reduxForm } from 'redux-form';
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 
-import InputField from './InputField';
+import InputField from '../InputField';
 
 const validate = (values) => {
     const errors = {};
@@ -30,6 +30,7 @@ class SignInForm extends React.Component {
                             name="email"
                             component={InputField}
                             errors={errors}
+                            props={{color: "secondary"}}
                         />
                         <Field
                             label="Password"
@@ -37,6 +38,7 @@ class SignInForm extends React.Component {
                             name="password"
                             component={InputField}
                             errors={errors}
+                            props={{color: "secondary"}}
                         />
                     </div>
                     <div className="BaseFormButtons">

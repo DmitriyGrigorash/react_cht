@@ -1,7 +1,7 @@
 import React from 'react';
 import TextField from '@material-ui/core/TextField';
 
-const InputField = ({input, label, name, meta, type}) => {
+const InputField = ({input, label, name, meta, type, ...props}) => {
 	const error = meta.touched && meta.error;
 	return (
 		<div className="InputField">
@@ -12,6 +12,7 @@ const InputField = ({input, label, name, meta, type}) => {
 		        name={name}
 		        fullWidth
 		        error={!!error}
+				{...props}
 		        {...input}
       		/>
 		</div>
