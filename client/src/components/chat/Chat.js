@@ -35,14 +35,26 @@ const Message = () => {
 
 
 class Chat extends Component {
+    constructor(props) {
+        super(props);
 
-    componentDidMount() {
-        // this.props.getMessages()
+        this.sendNewMessage = this.sendNewMessage.bind(this);
     }
 
-    sendNewMessage(message) {
-        console.log('### message', message)
-        // this.props.sendMessage(message)
+    componentDidMount() {
+        this.props.getMessages()
+    }
+
+    sendNewMessage(text) {
+        const userId = this.props.user.id;
+        const message = {
+            body: text.message,
+            read: true,
+            dateSent: Date.now(),
+            userId: userId
+        };
+        console.log('### message', message);
+        this.props.sendMessage(message)
     }
 
     render() {

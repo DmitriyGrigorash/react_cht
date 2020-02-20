@@ -7,7 +7,6 @@ export const sendMessage = (message) => async dispatch => {
         .then(res => {
             dispatch({
                 type: SEND_MESSAGE,
-                payload: message
             })
         })
         .catch(err => {
@@ -24,7 +23,7 @@ export const getMessages = () => async dispatch => {
             console.log('### res', res.data);
             dispatch({
                 type: GET_MESSAGES,
-                payload: res.body
+                payload: res.data
             })
         })
         .catch(err => {
