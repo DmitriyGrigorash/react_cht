@@ -12,21 +12,42 @@ import './styles.scss';
 
 
 const useStyles = makeStyles({
-    root: {
+    myMessage: {
+        background: '#8EEA85',
         marginBottom: 10,
         minHeight: 100,
+    },
+    message: {
+        background: '#00D3AB',
+        marginBottom: 10,
+        minHeight: 100,
+    },
+    body: {
+        color: '#3c3c3c',
+        fontSize: 14
+    },
+    name: {
+        fontSize: 17
+    },
+    status: {
+        color: '#4e4e4e',
+        fontSize: 10,
+        marginTop: 10
     }
 });
-const Message = () => {
+const Message = ({name, status, body, me}) => {
     const classes = useStyles();
     return(
-        <Card className={classes.root}>
+        <Card className={me ? classes.myMessage : classes.message}>
             <CardContent>
-                <Typography variant="body1" gutterBottom>
-                    Name
+                <Typography className={classes.name}>
+                    {name}
                 </Typography>
-                <Typography variant="body2">
-                    Message body
+                <Typography className={classes.body}>
+                    {body}
+                </Typography>
+                <Typography className={classes.status}>
+                    {status}
                 </Typography>
             </CardContent>
         </Card>
@@ -42,31 +63,34 @@ class Chat extends Component {
     }
 
     componentDidMount() {
-        this.props.getMessages()
+        this.props.getMessages();
     }
 
     sendNewMessage(text) {
-        const userId = this.props.user.id;
         const message = {
             body: text.message,
-            read: true,
+            status: 'Sent',
             dateSent: Date.now(),
-            userId: userId
+            userId: this.props.user.id,
+            name: this.props.user.name
         };
-        console.log('### message', message);
-        this.props.sendMessage(message)
+        this.props.sendMessage(message);
+        this.props.getMessages();
     }
 
     render() {
         return (
             <article className="Chat">
                 <section className="Chat__Area">
-                    <Message/>
-                    <Message/>
-                    <Message/>
-                    <Message/>
-                    <Message/>
-                    <Message/>
+                    {this.props.messages.map((msg) =>
+                        <Message
+                            name={msg.name}
+                            status={msg.status}
+                            body={msg.body}
+                            me={msg.userId === this.props.user.id}
+                        />
+                        )
+                    }
                 </section>
                 <section className="Chat__Text-field">
                     <FormChat onSubmit={this.sendNewMessage} errors={this.props.errors}/>

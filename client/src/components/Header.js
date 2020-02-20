@@ -78,7 +78,7 @@ export class Header extends React.PureComponent {
                         <Typography variant="h5" color="secondary" className={classes.grow}>
                             Exciting Random Chat
                         </Typography>
-                        <Typography variant="h6" color="inherit" className={classes.grow}>
+                        <Typography variant="h6" color="secondary" className={classes.grow}>
                             {auth.user && auth.user.name}
                         </Typography>
                         <AuthBtn isAuth={auth.isAuthenticated} classes={classes} logout={this.onLogout}/>

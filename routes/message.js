@@ -3,9 +3,9 @@ const Message = mongoose.model('messages');
 
 module.exports = app => {
     app.post('/api/message', async (req, res) => {
-        const {body, read, dateSent, userId, name} = req.body;
+        const {body, status, dateSent, userId, name} = req.body;
         console.log('### post mss', req.body);
-        const message = new Message({body, read, dateSent, userId, name});
+        const message = new Message({body, status, dateSent, userId, name});
 
         await message.save((err) => {
             if (err) return res.status(400).json(err);

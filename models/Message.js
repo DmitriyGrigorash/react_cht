@@ -3,9 +3,9 @@ const { Schema } = mongoose;
 
 const MessageSchema = new Schema({
     body: String,
-    read: Boolean,
+    status: String,
     dateSent: Date,
-    _userId: String,
+    userId: String,
     name: String
 });
 
