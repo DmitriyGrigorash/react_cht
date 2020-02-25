@@ -76,6 +76,16 @@ module.exports = app => {
             });
     });
 
+    app.get('/api/users', async (req, res) => {
+        try {
+            const users = await User.find();
+            console.log('### get users', users);
+            res.send(users);
+        } catch (err) {
+            res.status(404).json(err);
+        }
+    });
+
     app.get('/api/me', passport.authenticate('jwt', { session: false, failureRedirect: '/api/login' }), (req, res) => {
         res.redirect('/chat');
         // return res.json({
